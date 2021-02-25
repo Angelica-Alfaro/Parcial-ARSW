@@ -2,9 +2,10 @@ package eci.arsw.covidanalyzer.service;
 
 import eci.arsw.covidanalyzer.model.Result;
 import eci.arsw.covidanalyzer.model.ResultType;
-
+import org.springframework.stereotype.Service;
 import java.util.UUID;
 
+@Service
 public interface ICovidAggregateService {
 
     /**
