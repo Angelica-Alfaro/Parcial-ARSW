@@ -11,18 +11,20 @@ public class Result {
     private String gender;
     private String email;
     private String birthString;
-
     private String testString;
     private boolean result;
     private double testSpecifity;
+    private int numberTest;
+    private ResultType resultType;
     //</editor-fold>
 
-    //<editor-fold desc="getters">
+    
+	//<editor-fold desc="getters">
     public UUID getId() {
         return id;
     }
 
-    public String getFirstName() {
+	public String getFirstName() {
         return firstName;
     }
 
@@ -53,6 +55,15 @@ public class Result {
     public double getTestSpecifity() {
         return testSpecifity;
     }
+    
+    public int getNumberTest() {
+		return numberTest;
+	}
+    
+    public ResultType getResultType() {
+		return resultType;
+	}
+
     //</editor-fold>
 
     //<editor-fold desc="setters">
@@ -91,6 +102,14 @@ public class Result {
     public void setTestSpecifity(double testSpecifity) {
         this.testSpecifity = testSpecifity;
     }
+    
+    public void setNumberTest(int numberTest) {
+		this.numberTest = numberTest;
+	}
+    
+    public void setResultType(ResultType resultType) {
+		this.resultType = resultType;
+	}
     //</editor-fold>
 
     //<editor-fold desc="Equality Methods">

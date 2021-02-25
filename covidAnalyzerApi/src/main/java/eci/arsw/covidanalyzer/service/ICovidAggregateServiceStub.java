@@ -11,23 +11,36 @@ import eci.arsw.covidanalyzer.model.ResultType;
 
 @Component("ICovidAggregateServiceStub")
 public class ICovidAggregateServiceStub implements ICovidAggregateService {
-
+	private List<Result> listCovidResult = new CopyOnWriteArrayList<>();
 	@Override
-	public boolean aggregateResult(Result result, ResultType type) {
-		// TODO Auto-generated method stub
-		return false;
+	public void aggregateResult(Result result, ResultType type) {
+        for (Result results : listCovidResult) {
+            if (results.equals(result)) {
+            	results.setResultType(type);
+                results.setNumberTest(results.getNumberTest() + 1);
+            }
+        }
 	}
 
 	@Override
-	public boolean getResult(ResultType type) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Result> getResult(ResultType type) {
+	List<Result> resultsByType = new CopyOnWriteArrayList<>();
+	    for (Result results : listCovidResult) {
+	        if (results.getResultType().equals(type)) {
+	            resultsByType.add(results);
+	            results.setNumberTest(results.getNumberTest() + 1);
+	        }
+		}
+	    return resultsByType;
 	}
 
 	@Override
 	public void upsertPersonWithMultipleTests(UUID id, ResultType type) {
-		// TODO Auto-generated method stub
-		
+		for (Result results : listCovidResult) {
+            if (results.getId().equals(id)) {
+                results.setResultType(type);
+                results.setNumberTest(results.getNumberTest() + 1);
+            }
+		}
 	}
-
 }
